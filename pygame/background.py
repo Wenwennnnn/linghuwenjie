@@ -21,3 +21,4 @@ def run_game():
     pygame.display.set_caption("Aline Invasion") #设置当前窗口标题
     bg_color = (230,230,230) #设置背景颜色
 #开始游戏的主循环
+while True:
