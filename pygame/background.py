@@ -7,4 +7,6 @@ class player(t.Turtle):
         self.ht()  # 隐藏动画
         self.up()  # 抬起画笔
         self.score = 1  # 设置默认成绩
-# 
+# solve a bug
+a=0
+b=0
