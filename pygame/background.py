@@ -22,3 +22,4 @@ def run_game():
     bg_color = (230,230,230) #设置背景颜色
 #开始游戏的主循环
 while True:
+    for envent in pygame.event.get():
