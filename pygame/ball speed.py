@@ -6,5 +6,5 @@ class player(t.Turtle):
     self.up()  #抬起画笔
     self.score = 0 #设置默认成绩
     self.color(color) #设置颜色
-    self.speed()
+    self.speed(0)
  
