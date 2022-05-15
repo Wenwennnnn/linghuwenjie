@@ -10,4 +10,5 @@ class player(t.Turtle):
     self.goto(goto) #设置默认位置
     self.shape(shape) #设置形状
     self.shapesize(5,1) #设置形状比例
+    self.st()
  
