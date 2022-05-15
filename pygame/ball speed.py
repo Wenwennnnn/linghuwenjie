@@ -13,3 +13,4 @@ class player(t.Turtle):
     self.st() #显示动画
 
 def run_game():
+    
