@@ -1,4 +1,3 @@
 import turtle as t
 class player(t.Turtle):
-    def-init-(self,color,shape,goto
-)
+    def_init_(self,color,shape,goto):
