@@ -8,5 +8,5 @@ class player(t.Turtle):
     self.color(color) #设置颜色
     self.speed(0) #设置速度
     self.goto(goto) #设置默认位置
-    self.shape(shape)
+    self.shape(shape) #设置形状
  
