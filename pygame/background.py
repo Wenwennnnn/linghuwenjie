@@ -27,3 +27,4 @@ while True:
                  sys.exit() #用户退出
         scrren.fill(bg_color) #每次循环都重绘屏幕
         # 让最近绘制屏幕可见
+        pygame。display
