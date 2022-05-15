@@ -23,4 +23,4 @@ def run_game():
 #开始游戏的主循环
 while True:
     for envent in pygame.event.get(): #监听用户事件
-        if event
+        if event.type = pygame.QUIT
