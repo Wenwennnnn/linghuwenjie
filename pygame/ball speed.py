@@ -1,2 +1,2 @@
 import turtle as t
-class player(t)
+class player(t.Turtle)
