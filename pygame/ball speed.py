@@ -14,3 +14,4 @@ class player(t.Turtle):
 
 def run_game():
   """初始化游戏，并创建一个屏幕对象"""
+  pygame.init()
