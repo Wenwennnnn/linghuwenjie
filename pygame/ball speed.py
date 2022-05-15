@@ -13,4 +13,4 @@ class player(t.Turtle):
     self.st() #显示动画
 
 def run_game():
-    
+  """初始化游戏，并创建一个屏幕对象"""
