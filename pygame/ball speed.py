@@ -4,4 +4,5 @@ class player(t.Turtle):
     super(player,self)._init_()
     self.ht()  #隐藏动画
     self.up()  #抬起画笔
-    self.score = 0
+    self.score = 0 #设置默认成绩
+ 
