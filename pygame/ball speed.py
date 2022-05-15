@@ -11,3 +11,5 @@ class player(t.Turtle):
     self.shape(shape) #设置形状
     self.shapesize(5,1) #设置形状比例
     self.st() #显示动画
+
+def run_gme()
