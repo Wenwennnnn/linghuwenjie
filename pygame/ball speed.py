@@ -16,3 +16,4 @@ def run_game():
   """初始化游戏，并创建一个屏幕对象"""
   pygame.init() #初始化背景设置
   screen = pygame.display.set_mode((1200,800)) #创建一个名为screen的窗口
+  bg_color = (230,230,230)
