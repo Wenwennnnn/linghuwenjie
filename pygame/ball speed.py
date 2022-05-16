@@ -15,4 +15,4 @@ class player(t.Turtle):
 def run_game():
   """初始化游戏，并创建一个屏幕对象"""
   pygame.init() #初始化背景设置
-  screen = pygame.dispaly..set_mode
+  screen = pygame.display..set_mode((1200,700))
