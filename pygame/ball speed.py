@@ -21,4 +21,4 @@ def run_game():
   #开始游戏的主循环
   while True:
 
-    for event in pygame.event.get():
+    for event in pygame.event.get(): #监听用户事件
