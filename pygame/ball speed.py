@@ -22,3 +22,4 @@ def run_game():
   while True:
 
     for event in pygame.event.get(): #监听用户事件
+      if event.type == pygame.QUIT: 
