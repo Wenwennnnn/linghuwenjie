@@ -24,4 +24,4 @@ def run_game():
     for event in pygame.event.get(): #监听用户事件
       if event.type == pygame.QUIT: #判断用户是否点击了关闭按钮
         sys.exit()  #用户退出
-      screen.fill(color)
+      screen.fill(bg_color)
