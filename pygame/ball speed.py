@@ -25,3 +25,4 @@ def run_game():
       if event.type == pygame.QUIT: #判断用户是否点击了关闭按钮
         sys.exit()  #用户退出
       screen.fill(bg_color) #每次循环都重绘屏幕
+      #让最近绘制屏幕可见
