@@ -11,4 +11,4 @@ pen.write(score_text,align='center',font={"Arial",20,'bold'})
 # 创造玩家
 class player(t.Turtle):
     def_init_(self,color,shape,goto):
-    supre(player,self)
+    super(player,self)._init_()
