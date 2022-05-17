@@ -5,3 +5,4 @@ import turtle as t
 def add_score(who):
 pen.clear()
 who.score += 1
+score_text = 'p1:{},p2:{}'.format
