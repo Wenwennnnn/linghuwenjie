@@ -7,3 +7,7 @@ pen.clear()
 who.score += 1
 score_text = 'p1:{},p2:{}'.format(p1.score,p2.score)
 pen.write(score_text,align='center',font={"Arial",20,'bold'})
+
+# 创造玩家
+class player(t.Turtle):
+    def_init_(self,color,shape,goto):
