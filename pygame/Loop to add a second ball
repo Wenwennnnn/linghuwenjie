@@ -12,4 +12,5 @@ pen.write(score_text,align='center',font={"Arial",20,'bold'})
 class player(t.Turtle):
     def_init_(self,color,shape,goto):
     super(player,self)._init_()
-    self.ht()
+    self.ht()   #隐藏动画
+    self.up()
