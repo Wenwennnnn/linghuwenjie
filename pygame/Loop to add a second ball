@@ -1,3 +1,4 @@
 import turtle as t
 
 # 添加分数
+def add_score(who):
