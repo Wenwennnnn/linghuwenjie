@@ -32,3 +32,4 @@ class player(t.Turtle):
     def set_down(self):
         y = self.ycor()
         y = y - 20
+        self.sety(y)
