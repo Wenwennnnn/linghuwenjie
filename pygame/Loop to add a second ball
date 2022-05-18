@@ -26,3 +26,4 @@ class player(t.Turtle):
     def set_up(self):
         y = self.ycor()
         y = y + 20
+        self.sety(y)
