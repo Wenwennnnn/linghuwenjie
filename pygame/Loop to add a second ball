@@ -29,3 +29,4 @@ class player(t.Turtle):
         self.sety(y)
 
     #向下移动
+    def set_down(self):
