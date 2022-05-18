@@ -23,3 +23,4 @@ class player(t.Turtle):
     self.st()  #显示动画
 
     #向上移动
+    def set_up(self):
