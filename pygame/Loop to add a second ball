@@ -27,3 +27,5 @@ class player(t.Turtle):
         y = self.ycor()
         y = y + 20
         self.sety(y)
+
+    #向下移动
