@@ -31,3 +31,4 @@ class player(t.Turtle):
     #向下移动
     def set_down(self):
         y = self.ycor()
+        y = y - 20
