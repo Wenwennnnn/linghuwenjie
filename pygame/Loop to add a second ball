@@ -24,3 +24,4 @@ class player(t.Turtle):
 
     #向上移动
     def set_up(self):
+        y = self.ycor()
