@@ -40,3 +40,4 @@ game.bgcolor('black')
 game.setup(800,600)
 
 p1 = player(color="blue",shape="square",goto=(-390,0))
+p2 = player(color="red",shape="square",goto=(380,0))
