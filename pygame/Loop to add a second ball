@@ -36,3 +36,4 @@ class player(t.Turtle):
 
 game = t.Screen()
 game.title("双人乒乓球")
+game.bgcolor('black')
