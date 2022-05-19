@@ -38,3 +38,5 @@ game = t.Screen()
 game.title("双人乒乓球")
 game.bgcolor('black')
 game.setup(800,600)
+
+p1 = player(color="blue",shape="square",goto=(-390,0))
