@@ -33,3 +33,5 @@ class player(t.Turtle):
         y = self.ycor()
         y = y - 20
         self.sety(y)
+
+game = t.Screen()
