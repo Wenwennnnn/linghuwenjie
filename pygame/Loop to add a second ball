@@ -50,3 +50,4 @@ pp.speed(0)
 pp.color('yellow')
 pp.shape('circle')
 pp.dx = 5
+pp.dy = 5
