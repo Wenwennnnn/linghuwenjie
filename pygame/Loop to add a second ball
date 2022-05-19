@@ -45,3 +45,4 @@ p2 = player(color="red",shape="square",goto=(380,0))
 #设置球
 pp = t.Turtle()
 pp.ht()
+pp.up()
