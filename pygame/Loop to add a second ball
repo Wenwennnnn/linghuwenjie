@@ -35,3 +35,4 @@ class player(t.Turtle):
         self.sety(y)
 
 game = t.Screen()
+game.title("双人乒乓球")
