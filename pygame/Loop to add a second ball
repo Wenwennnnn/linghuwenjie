@@ -64,3 +64,5 @@ pen.write(score_text,align='center',font={"Arial",20,'bold'})
 
 #监听按键
 game.listen()
+game.onkey(p1.set_up,'w')
+game.onkey(p1.set_down,'s')
