@@ -54,4 +54,6 @@ pp.dy = 5
 pp.st()
 
 # 设置画笔，画成绩
-pen = t.Turtle
+pen = t.Turtle()
+pen.ht()
+pen.up()
