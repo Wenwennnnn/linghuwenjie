@@ -54,3 +54,4 @@ pp.dy = 5
 pp.st()
 
 # 设置画笔，画成绩
+pen = t.Turtle
