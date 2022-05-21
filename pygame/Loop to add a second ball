@@ -59,3 +59,5 @@ pen.ht()
 pen.up()
 pen.color("white")
 pen.goto(-50,250)
+score_text = 'p1:{},p2:{}'.format(p1.score,p2.score)
+pen.write
