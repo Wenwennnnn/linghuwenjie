@@ -63,4 +63,4 @@ score_text = 'p1:{},p2:{}'.format(p1.score,p2.score)
 pen.write(score_text,align='center',font={"Arial",20,'bold'})
 
 #监听按键
-while True:
+game.listen()
