@@ -52,3 +52,5 @@ pp.shape('circle')
 pp.dx = 5
 pp.dy = 5
 pp.st()
+
+# 设置画笔，画成绩
