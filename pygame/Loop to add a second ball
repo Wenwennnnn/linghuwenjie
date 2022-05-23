@@ -70,3 +70,4 @@ game.onkey(p2.set_up,'Up')
 game.onkey(p2.set_down,'Down')
 
 #循环游戏
+while True:
