@@ -68,3 +68,5 @@ game.onkey(p1.set_up,'w')
 game.onkey(p1.set_down,'s')
 game.onkey(p2.set_up,'Up')
 game.onkey(p2.set_down,'Down')
+
+#循环游戏
