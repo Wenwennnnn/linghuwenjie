@@ -91,4 +91,4 @@ if pp.xcor() < -370:
          add_score(p2)
          pp.goto(0,0)
 elif pp.xcor() > 360:
-        
+if p2_y_range_up > pp.ycor() > p2_y_range_down:      
