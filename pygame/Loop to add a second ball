@@ -73,3 +73,7 @@ game.onkey(p2.set_down,'Down')
 while True:
 # game.update()
 pp.setx(pp.xcor() + pp.dx)
+pp.sety(pp.ycpr() + pp.dy)
+if pp.ycor() > 290 or pp.ycor() < -290: #上下边界接住后反弹
+   pp.dy *= -1
+   #允许的接住的范围区域
