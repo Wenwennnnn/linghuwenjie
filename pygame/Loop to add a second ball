@@ -92,4 +92,8 @@ if pp.xcor() < -370:
          pp.goto(0,0)
 elif pp.xcor() > 360:
 if p2_y_range_up > pp.ycor() > p2_y_range_down:
-      pp.dx *= -1      
+      pp.dx *= -1
+    else:
+    print("p2 lose")
+    
+
