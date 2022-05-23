@@ -88,3 +88,5 @@ if pp.xcor() < -370:
     else:
          print("p1 lose")
          print("p2 得分")
+         add_score(p2)
+         pp.goto(0,0)
