@@ -85,3 +85,6 @@ p2_y_range_down = p2.ycor() - 50
 if pp.xcor() < -370:
  if p1_y_range_up > pp.ycor() > p1_y_range_down:
         pp.dx *= -1
+    else:
+         print("p1 lose")
+         print("p2 得分")
