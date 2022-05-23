@@ -71,3 +71,5 @@ game.onkey(p2.set_down,'Down')
 
 #循环游戏
 while True:
+# game.update()
+pp.setx(pp.xcor() + pp.dx)
