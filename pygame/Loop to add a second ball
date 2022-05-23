@@ -83,3 +83,5 @@ p2_y_range_up = p2.ycor() + 50
 p2_y_range_down = p2.ycor() - 50
 #左右边界接住反弹，或者对手得分
 if pp.xcor() < -370:
+ if p1_y_range_up > pp.ycor() > p1_y_range_down:
+        pp.dx *= -1
