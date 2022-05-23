@@ -97,4 +97,5 @@ if p2_y_range_up > pp.ycor() > p2_y_range_down:
     print("p2 lose")
     print("p1 得分")
     add_score(p1)
+    pp.goto(0,0)
 
