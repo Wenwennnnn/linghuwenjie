@@ -21,7 +21,7 @@ class Matris(object):
         self.size = {'width': size[0], 'height': size[1]}
         self.blocksize = blocksize
         self.surface = Surface((self.size['width']  * self.blocksize,
-                                self.size['height'] * self.blocksize))
+                                (self.size['height']-2) * self.blocksize))
         self.matrix = dict()
         for y in range(self.size['height']):
             for x in range(self.size['width']):
