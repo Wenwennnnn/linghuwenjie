@@ -337,7 +337,7 @@ class Menu(object):
         )
         menu.x = 50
         menu.y = 50
-        menu.enableEffect('raise-col-padding-on-focus', enlarge_time=0.1)
+        menu.enableEffect('raise-col-padding-on-focus', enlarge_time=0.07)
 
         while self.running:
             events = pygame.event.get()
