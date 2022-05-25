@@ -205,3 +205,83 @@ class Matris(object):
             for y in range(0, line+1)[::-1]:
                 for x in range(self.size['width']):
                     self.matrix[(y,x)] = self.matrix.get((y-1,x), None)
+
+                     def blend(self, shape=None, position=None, matrix=None, block=None, allow_failure=True, shadow=False):
+        if shape is None:
+            shape = self.rotated()
+        if position is None:
+            position = self.tetromino_position
+
+        copy = dict(self.matrix if matrix is None else matrix)
+        posY, posX = position
+        for x in range(posX, posX+len(shape)):
+            for y in range(posY, posY+len(shape)):
+                if (copy.get((y, x), False) is False and shape[y-posY][x-posX] # shape is outside the matrix
+                    or # coordinate is occupied by something else which isn't a shadow
+                    copy.get((y,x), False) and shape[y-posY][x-posX] and copy[(y,x)][0] != 'shadow'): 
+                    if allow_failure:
+                        return False
+                    else:
+                        print copy[(y,x)]
+                        raise RuntimeError("Tried to blend a broken matrix")
+                elif shape[y-posY][x-posX] and not shadow:
+                    copy[(y,x)] = ('block', self.tetromino_block if block is None else block)
+                elif shape[y-posY][x-posX] and shadow:
+                    copy[(y,x)] = ('shadow', block)
+
+
+        return copy
+
+class Game(object):
+    def main(self, screen):
+        clock = pygame.time.Clock()
+        background = Surface(screen.get_size())
+        background.fill((200,0,0))
+        matris = Matris()
+        matris_border = Surface((10*30+20, 20*30+20))
+        matris_border.fill((80,80,80))
+
+        while 1:
+            dt = clock.tick(45)
+
+            events = pygame.event.get()
+            for event in events:
+                if event.type == pygame.QUIT:
+                    exit()
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    return
+
+            matris.update(dt / 1000., events)
+            background.blit(matris_border, (0,0))
+            background.blit(matris.surface, (10,10))
+            screen.blit(background, (0, 0))
+            pygame.display.flip()
+
+class Menu(object):
+    running = True
+    def main(self, screen):
+        clock = pygame.time.Clock()
+        menu = kezmenu.KezMenu(
+            ['Play!', lambda: Game().main(screen)],
+            ['Quit', lambda: setattr(self, 'running', False)],
+        )
+        menu.x = 50
+        menu.y = 50
+        menu.enableEffect('raise-col-padding-on-focus', enlarge_time=0.1)
+
+        while self.running:
+            events = pygame.event.get()
+
+            for event in events:
+                if event.type == pygame.QUIT:
+                    exit()
+
+            menu.update(events, clock.tick(30)/1000.)
+            screen.fill((0,200,0))
+            menu.draw(screen)
+            pygame.display.flip()
+
+if __name__ == '__main__':
+    pygame.init()
+    screen = pygame.display.set_mode((640, 880))
+    Menu().main(screen)
