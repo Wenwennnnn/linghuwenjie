@@ -229,7 +229,7 @@ class Matris(object):
                         return False
                     else:
                         print copy[(y,x)]
-                        raise RuntimeError("Tried to blend a broken matrix")
+                        raise BrokenMatrixException("Tried to blend a broken matrix. This should mean game over, if you see this it is certainly a bug. (or you are developing)")
                 elif shape[y-posY][x-posX] and not shadow:
                     copy[(y,x)] = ('block', self.tetromino_block if block is None else block)
                 elif shape[y-posY][x-posX] and shadow:
