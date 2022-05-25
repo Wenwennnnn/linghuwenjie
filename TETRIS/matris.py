@@ -31,8 +31,8 @@ class Matris(object):
         self.next_tetromino = random.choice(list_of_tetrominoes)
         self.set_tetrominoes()
         self.tetromino_rotation = 0
-        self.down_key_timer = 0
-        self.down_key_speed = 0.3
+        self.downwards_timer = 0
+        self.base_downwards_speed = 0.4 # Move down every 400 ms
 
         self.movement_keys = {'left': 0, 'right': 0}
         self.movement_keys_speed = 0.05
