@@ -13,6 +13,9 @@ from tetrominoes import (T_long,
 from tetrominoes import list_of_tetrominoes
 from tetrominoes import rotate
 
+class BrokenMatrixException(Exception):
+    pass
+
 class Matris(object):
     def __init__(self, size=(10, 22), blocksize=30):
         self.size = {'width': size[0], 'height': size[1]}
