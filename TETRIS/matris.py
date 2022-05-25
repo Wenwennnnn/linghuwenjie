@@ -272,7 +272,19 @@ class Game(object):
             background.blit(self.next_tetromino_surf(matris.surface_of_next_tetromino), (400, 30))
             screen.blit(background, (0, 0))
             pygame.display.flip()
+            def next_tetromino_surf(self, tetromino_surf):
+             area = Surface((30*5, 30*5))
+             area.fill((80,80,80))
+             area.fill((30,30,30), Rect(10, 10, 30*5-20, 30*5-20))
 
+             areasize = area.get_size()[0]
+             tetromino_surf_size = tetromino_surf.get_size()[0]
+              # ^^ I'm assuming width and height are the same
+
+        center = areasize/2 - tetromino_surf_size/2
+        area.blit(tetromino_surf, (center, center))
+
+        return area
 class Menu(object):
     running = True
     def main(self, screen):
