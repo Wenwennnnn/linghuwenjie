@@ -124,7 +124,8 @@ class Matris(object):
 
         position = (posY-1, posX)
 
-        return self.blend(position=position, block=self.shadow_block, shadow=True)
+        return self.blend(position=position, block=self.shadow_block, shadow=True) or self.matrix
+        # If the blend isn't successful just return the old matrix. The blend will fail later in self.update, it's game over.
 
 
     def request_rotation(self):
