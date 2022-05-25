@@ -66,3 +66,39 @@ def rotate(shape, times=1):
 def rotate_left(shape, times=1):
     """ Rotate a shape to the left """
     return rotate(shape, 3) if times <= 1 else rotate_left(rotate(shape, 3), times-1)
+
+    def shape_str(shape):
+    """ Return a string of a shape in human readable form """
+    return '\n'.join(''.join(line) for line in shape)
+
+def shape(shape):
+    """ Print a shape in human readable form """
+    print shape_str(shape)
+
+
+
+
+
+def test():
+    tetromino_shapes = [t.shape for t in list_of_tetrominoes]
+    map(rotate,    tetromino_shapes)
+    map(shape,     tetromino_shapes)
+    map(shape_str, tetromino_shapes)
+
+    assert shape_str(T_left_snake.shape) == "XXO\nOXX\nOOO"
+
+    assert rotate(T_square.shape) == T_square.shape
+
+    assert rotate(T_right_snake.shape, 4) == T_right_snake.shape
+
+    assert rotate(T_hat.shape)    == ((O,X,O),
+                                      (O,X,X),
+                                      (O,X,O))
+
+    assert rotate(T_hat.shape, 2) == ((O,O,O),
+                                      (X,X,X),
+                                      (O,X,O))
+    print "All tests passed in {}, things seems to be working alright".format(__file__)
+
+if __name__ == '__main__':
+    test()
