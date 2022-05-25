@@ -282,6 +282,38 @@ class Game(object):
             background.blit(self.info_surf(matris), (350, 200))
             screen.blit(background, (0, 0))
             pygame.display.flip()
+             def info_surf(self, matris):
+        score, level, lines = matris.score, matris.level, matris.lines
+
+        textcolor = (255, 255, 255)
+        font = pygame.font.Font(None, 30)
+        width = 280
+
+        def renderpair(text, val):
+            text = font.render(text, True, textcolor)
+            val = font.render(str(val), True, textcolor)
+
+            surf = Surface((width, text.get_rect().height + 20), pygame.SRCALPHA, 32)
+
+            surf.blit(text, text.get_rect(top=20, left=20))
+            surf.blit(val, val.get_rect(top=20, right=width-20))
+            return surf
+
+        scoresurf = renderpair("Score", score)
+        levelsurf = renderpair("Level", level)
+        linessurf = renderpair("Lines", lines)
+
+        height = 20 + levelsurf.get_rect().height + scoresurf.get_rect().height + linessurf.get_rect().height
+
+        area = Surface((width, height))
+        area.fill((80,80,80))
+        area.fill((30,30,30), Rect(10, 10, width-20, height-20))
+
+        area.blit(levelsurf, (0,0))
+        area.blit(scoresurf, (0, levelsurf.get_rect().height))
+        area.blit(linessurf, (0, levelsurf.get_rect().height + scoresurf.get_rect().height))
+
+        return area
             def next_tetromino_surf(self, tetromino_surf):
              area = Surface((30*5, 30*5))
              area.fill((80,80,80))
