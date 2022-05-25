@@ -88,9 +88,12 @@ class Matris(object):
             elif pressed(pygame.K_l):
                 self.lock_tetromino()
 
-        self.down_key_timer += timepassed
-        down_key_speed = self.down_key_speed*0.10 if pygame.key.get_pressed()[pygame.K_DOWN] else self.down_key_speed
-        if self.down_key_timer > down_key_speed:
+              self.downwards_speed = self.base_downwards_speed ** (1 + self.level/10.)
+            print self.downwards_speed
+
+              self.downwards_timer += timepassed
+             downwards_speed = self.downwards_speed*0.10 if pygame.key.get_pressed()[pygame.K_DOWN] else self.downwards_speed
+        if self.downwards_timer > downwards_speed:
             result = self.request_movement('down')
             if not result:
                 self.lock_tetromino()
