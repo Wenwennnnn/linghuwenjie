@@ -97,7 +97,7 @@ class Matris(object):
             result = self.request_movement('down')
             if not result:
                 self.lock_tetromino()
-            self.down_key_timer %= down_key_speed
+            self.downwards_timer %= downwards_speed
 
 
         if any(self.movement_keys.values()):
