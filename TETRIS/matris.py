@@ -108,7 +108,9 @@ class Matris(object):
 
         for y in range(self.size['height']):
             for x in range(self.size['width']):
-                block_location = Rect(x*self.blocksize, y*self.blocksize, self.blocksize, self.blocksize)
+                
+                #hide the 2 first rows by drawing them outside of the surface
+                block_location = Rect(x*self.blocksize, (y*self.blocksize - 2*self.blocksize), self.blocksize, self.blocksize)
                 if with_tetromino[(y,x)] is None:
                     self.surface.fill((30,30,30), block_location)
                 else:
