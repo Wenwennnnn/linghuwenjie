@@ -353,5 +353,5 @@ class Menu(object):
 
 if __name__ == '__main__':
     pygame.init()
-    screen = pygame.display.set_mode((640, 880))
+    screen = pygame.display.set_mode((640, 30*20+20))
     Menu().main(screen)
