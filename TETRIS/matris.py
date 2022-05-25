@@ -246,7 +246,7 @@ class Matris(object):
                 if shape[y][x]:
                     surf.blit(self.block(self.next_tetromino.color), (x*self.blocksize, y*self.blocksize))
         return surf
-        
+
 class Game(object):
     def main(self, screen):
         clock = pygame.time.Clock()
@@ -269,6 +269,7 @@ class Game(object):
             matris.update(dt / 1000., events)
             background.blit(matris_border, (0,0))
             background.blit(matris.surface, (10,10))
+            background.blit(self.next_tetromino_surf(matris.surface_of_next_tetromino), (400, 30))
             screen.blit(background, (0, 0))
             pygame.display.flip()
 
