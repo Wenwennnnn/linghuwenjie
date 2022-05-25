@@ -97,7 +97,7 @@ class Matris(object):
             result = self.request_movement('down')
             if not result:
                 self.lock_tetromino()
-            self.downwards_timer %= downwards_speed
+        self.downwards_timer %= downwards_speed
 
 
         if any(self.movement_keys.values()):
@@ -109,8 +109,12 @@ class Matris(object):
         with_shadow = self.place_shadow()
         with_tetromino = self.blend(self.rotated(), allow_failure=False, matrix=with_shadow)
 
-        self.remove_lines()
+        lines_cleared = self.remove_lines()
+        self.lines += lines_cleared
+        self.score += 100 * lines_cleared * self.level
 
+        if self.lines >= self.level*10:
+            self.level += 1
         for y in range(self.size['height']):
             for x in range(self.size['width']):
                 
@@ -216,7 +220,7 @@ class Matris(object):
             for y in range(0, line+1)[::-1]:
                 for x in range(self.size['width']):
                     self.matrix[(y,x)] = self.matrix.get((y-1,x), None)
-
+                    return len(lines)
                      def blend(self, shape=None, position=None, matrix=None, block=None, allow_failure=True, shadow=False):
         if shape is None:
             shape = self.rotated()
