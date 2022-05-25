@@ -37,7 +37,9 @@ class Matris(object):
         self.movement_keys = {'left': 0, 'right': 0}
         self.movement_keys_speed = 0.05
         self.movement_keys_timer = (-self.movement_keys_speed)*2
-
+        self.level = 1
+        self.score = 0
+        self.lines = 0
     def set_tetrominoes(self):
         self.current_tetromino = self.next_tetromino
         self.next_tetromino = random.choice(list_of_tetrominoes)
