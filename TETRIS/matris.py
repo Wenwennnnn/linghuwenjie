@@ -41,6 +41,7 @@ class Matris(object):
     def set_tetrominoes(self):
         self.current_tetromino = self.next_tetromino
         self.next_tetromino = random.choice(list_of_tetrominoes)
+        self.surface_of_next_tetromino = self.construct_surface_of_next_tetromino()
         self.tetromino_position = (0,4) if len(self.current_tetromino.shape) == 2 else (0, 3)
         self.tetromino_rotation = 0
         self.tetromino_block = self.block(self.current_tetromino.color)
