@@ -127,3 +127,45 @@ class KezMenuEffectAble(object):
         """Delete all line paddings"""
         for o in self.options:
             del o['padding_line']
+
+
+            def _effectinit_raise_col_padding_on_focus(self, name, **kwargs):
+        """Init the effect that raise the empty space on the left of the focused entry.
+        Keyword arguments can contain enlarge_time (seconds needed to raise the element size)
+        and padding (a value that repr the number of pixel to be added above and below the focused line).
+        """
+        self._effects[name] = kwargs
+        if not kwargs.has_key('enlarge_time'):
+            kwargs['enlarge_time'] = .5
+        if not kwargs.has_key('padding'):
+            kwargs['padding'] = 10
+        kwargs['padding_pps'] = kwargs['padding']/kwargs['enlarge_time'] # pixel-per-second
+        # Now, every menu voices need additional infos
+        for o in self.options:
+            o['padding_col']=0.
+
+    def _effectupdate_raise_col_padding_on_focus(self, time_passed):
+        """Gradually enlarge the padding of the focused column.
+        If the focus move from a voice to another, also reduce padding of all other not focused entries.
+        """
+        data = self._effects['raise-col-padding-on-focus']
+        pps = data['padding_pps']
+        i = 0
+        for o in self.options:
+            if i==self.option:
+                # Raise me
+                if o['padding_col']<data['padding']:
+                    o['padding_col']+=pps*time_passed
+                elif o['padding_col']>data['padding']:
+                    o['padding_col'] = data['padding']
+            elif o['padding_col']:
+                if o['padding_col']>0:
+                    o['padding_col']-=pps*time_passed
+                elif o['padding_col']<0:
+                    o['padding_col'] = 0
+            i+=1
+
+    def _effectdisable_raise_col_padding_on_focus(self):
+        """Delete all column paddings"""
+        for o in self.options:
+            del o['padding_col']
