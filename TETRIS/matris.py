@@ -189,8 +189,6 @@ class Matris(object):
         # deleting boxarr or else the box surface will be 'locked' or something like that and won't blit.
         border.blit(box, Rect(borderwidth, borderwidth, 0, 0))
 
-
-
         return border
 
     def lock_tetromino(self):
@@ -226,7 +224,7 @@ class Matris(object):
             for y in range(posY, posY+len(shape)):
                 if (copy.get((y, x), False) is False and shape[y-posY][x-posX] # shape is outside the matrix
                     or # coordinate is occupied by something else which isn't a shadow
-                    copy.get((y,x), False) and shape[y-posY][x-posX] and copy[(y,x)][0] != 'shadow'): 
+                    copy.get((y,x)) and shape[y-posY][x-posX] and copy[(y,x)][0] != 'shadow'):
                     if allow_failure:
                         return False
                     else:
