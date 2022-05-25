@@ -235,9 +235,18 @@ class Matris(object):
                 elif shape[y-posY][x-posX] and shadow:
                     copy[(y,x)] = ('shadow', block)
 
-
         return copy
 
+ def construct_surface_of_next_tetromino(self):
+        shape = self.next_tetromino.shape
+        surf = Surface((len(shape)*self.blocksize, len(shape)*self.blocksize), pygame.SRCALPHA, 32)
+
+        for y in range(len(shape)):
+            for x in range(len(shape)):
+                if shape[y][x]:
+                    surf.blit(self.block(self.next_tetromino.color), (x*self.blocksize, y*self.blocksize))
+        return surf
+        
 class Game(object):
     def main(self, screen):
         clock = pygame.time.Clock()
