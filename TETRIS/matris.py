@@ -55,7 +55,7 @@ class Matris(object):
         self.lock_tetromino()
 
     def update(self, timepassed, events):
-        self.previous = dict(self.matrix)
+    
 
         pressed = lambda key: event.type == pygame.KEYDOWN and event.key == key
         unpressed = lambda key: event.type == pygame.KEYUP and event.key == key
