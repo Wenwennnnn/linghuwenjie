@@ -205,6 +205,19 @@ class Matris(object):
     def lock_tetromino(self):
         tetromino_centerX = self.tetromino_position[1]*self.blocksize + len(self.current_tetromino.shape)*self.blocksize/2
         self.matrix = self.blend()
+         lines_cleared, bottom_line_cleared = self.remove_lines()
+        self.lines += lines_cleared
+
+        if lines_cleared:
+            self.linescleared_sound.play()
+            bonus_multiplier = (lines_cleared + self.combo)
+            self.score += 100 * bonus_multiplier
+
+        if self.lines >= self.level*10:
+            self.levelup_sound.play()
+            self.level += 1
+
+        self.combo = self.combo + 1 if lines_cleared else 0
         self.set_tetrominoes()
 
     def remove_lines(self):
