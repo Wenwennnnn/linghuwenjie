@@ -291,7 +291,9 @@ class Game(object):
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     return
 
-            matris.update(dt / 1000., events)
+             result = self.matris.update(dt / 1000., events)
+            if result == 'gameover':
+                return
             background.blit(matris_border, (0,0))
             background.blit(matris.surface, (10,10))
             background.blit(self.next_tetromino_surf(matris.surface_of_next_tetromino), (400, 30))
