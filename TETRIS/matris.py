@@ -112,12 +112,11 @@ class Matris(object):
 
         with_shadow = self.place_shadow()
 
-        lines_cleared = self.remove_lines()
-        self.lines += lines_cleared
-        self.score += 100 * lines_cleared * self.level
-
-        if self.lines >= self.level*10:
-            self.level += 1
+        try:
+            with_tetromino = self.blend(self.rotated(), allow_failure=False, matrix=with_shadow)
+        except BrokenMatrixException:
+            self.gameover_sound.play()
+            return 'gameover'
         for y in range(self.size['height']):
             for x in range(self.size['width']):
                 
