@@ -94,7 +94,6 @@ class Matris(object):
                 self.lock_tetromino()
 
               self.downwards_speed = self.base_downwards_speed ** (1 + self.level/10.)
-            print self.downwards_speed
 
               self.downwards_timer += timepassed
              downwards_speed = self.downwards_speed*0.10 if pygame.key.get_pressed()[pygame.K_DOWN] else self.downwards_speed
