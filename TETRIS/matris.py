@@ -277,7 +277,7 @@ class Game(object):
         clock = pygame.time.Clock()
         background = Surface(screen.get_size())
         background.fill((240,240,240))
-        matris = Matris()
+        self.matris = Matris()
         matris_border = Surface((10*30+20, 20*30+20))
         matris_border.fill((80,80,80))
 
