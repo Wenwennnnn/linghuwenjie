@@ -236,7 +236,7 @@ class Matris(object):
             for y in range(0, line+1)[::-1]:
                 for x in range(self.size['width']):
                     self.matrix[(y,x)] = self.matrix.get((y-1,x), None)
-                    return len(lines)
+                    return len(lines), sorted(lines)[-1] if lines else None
                      def blend(self, shape=None, position=None, matrix=None, block=None, allow_failure=True, shadow=False):
         if shape is None:
             shape = self.rotated()
