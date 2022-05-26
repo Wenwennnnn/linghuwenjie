@@ -280,7 +280,7 @@ class Game(object):
         self.matris = Matris()
         matris_border = Surface((10*30+20, 20*30+20))
         matris_border.fill((80,80,80))
-
+        self.bonus_stuff = []
         while 1:
             dt = clock.tick(45)
 
