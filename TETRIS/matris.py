@@ -111,7 +111,6 @@ class Matris(object):
             self.movement_keys_timer %= self.movement_keys_speed
 
         with_shadow = self.place_shadow()
-        with_tetromino = self.blend(self.rotated(), allow_failure=False, matrix=with_shadow)
 
         lines_cleared = self.remove_lines()
         self.lines += lines_cleared
