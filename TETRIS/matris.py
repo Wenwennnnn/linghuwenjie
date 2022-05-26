@@ -203,6 +203,7 @@ class Matris(object):
         return border
 
     def lock_tetromino(self):
+        tetromino_centerX = self.tetromino_position[1]*self.blocksize + len(self.current_tetromino.shape)*self.blocksize/2
         self.matrix = self.blend()
         self.set_tetrominoes()
 
