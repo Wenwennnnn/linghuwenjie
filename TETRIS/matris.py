@@ -319,9 +319,10 @@ class Game(object):
             surf.blit(val, val.get_rect(top=20, right=width-20))
             return surf
 
-        scoresurf = renderpair("Score", score)
-        levelsurf = renderpair("Level", level)
-        linessurf = renderpair("Lines", lines)
+        scoresurf = renderpair("Score", self.matris.score)
+        levelsurf = renderpair("Level", self.matris.level)
+        linessurf = renderpair("Lines", self.matris.lines)
+        combosurf = renderpair("Combo", "x{}".format(self.matris.combo+1))
 
         height = 20 + levelsurf.get_rect().height + scoresurf.get_rect().height + linessurf.get_rect().height
 
