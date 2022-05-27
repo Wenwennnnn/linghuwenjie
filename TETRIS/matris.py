@@ -26,7 +26,7 @@ MATRIX_HEIGHT = 22
 VISIBLE_MATRIX_HEIGHT = MATRIX_HEIGHT - 2
 
 class Matris(object):
-    def __init__(self, size=(10, 22), blocksize=30):
+    def __init__(self, size=(MATRIX_WIDTH, MATRIX_HEIGHT), blocksize=BLOCKSIZE):
         self.size = {'width': size[0], 'height': size[1]}
         self.blocksize = blocksize
         self.surface = Surface((self.size['width']  * self.blocksize,
