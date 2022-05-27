@@ -50,10 +50,16 @@ class Matris(object):
         self.score = 0
         self.lines = 0
         self.combo = 0 # Combo will increase when you clear lines with several tetrominos in a row
+        self.paused = False
+        self.gameover = False
+
+        self.highscore = load_score()
+        self.played_highscorebeaten_sound = False
 
         self.levelup_sound = pygame.mixer.Sound("resources/levelup.wav")
         self.linescleared_sound = pygame.mixer.Sound("resources/linecleared.wav")
         self.gameover_sound = pygame.mixer.Sound("resources/gameover.wav")
+        self.highscorebeaten_sound = pygame.mixer.Sound("resources/highscorebeaten.wav")
     def set_tetrominoes(self):
         self.current_tetromino = self.next_tetromino
         self.next_tetromino = random.choice(list_of_tetrominoes)
