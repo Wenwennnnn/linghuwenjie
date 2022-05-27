@@ -324,7 +324,10 @@ class Game(object):
         linessurf = renderpair("Lines", self.matris.lines)
         combosurf = renderpair("Combo", "x{}".format(self.matris.combo+1))
 
-        height = 20 + levelsurf.get_rect().height + scoresurf.get_rect().height + linessurf.get_rect().height
+        height = 20 + (levelsurf.get_rect().height + 
+                       scoresurf.get_rect().height +
+                       linessurf.get_rect().height + 
+                       combosurf.get_rect().height )
 
         area = Surface((width, height))
         area.fill((80,80,80))
