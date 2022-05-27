@@ -3,13 +3,7 @@ from pygame import Rect, Surface
 import random
 import kezmenu
 
-from tetrominoes import (T_long, 
-                         T_square, 
-                         T_hat,
-                         T_right_snake,
-                         T_left_snake,
-                         T_left_gun,
-                         T_right_gun)
+
 from tetrominoes import list_of_tetrominoes
 from tetrominoes import rotate
 
