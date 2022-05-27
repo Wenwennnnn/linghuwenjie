@@ -10,6 +10,20 @@ from scores import load_score, write_score
 
 class BrokenMatrixException(Exception):
     pass
+BGCOLOR = (15, 15, 20)#(40,40,40)
+BORDERCOLOR = (140, 140, 140)
+
+BLOCKSIZE = 30
+BORDERWIDTH = 10
+
+MATRIS_OFFSET = 20
+
+WIDTH = 700
+HEIGHT = 20*BLOCKSIZE + BORDERWIDTH*2 + MATRIS_OFFSET*2
+
+MATRIX_WIDTH = 10
+MATRIX_HEIGHT = 22
+VISIBLE_MATRIX_HEIGHT = MATRIX_HEIGHT - 2
 
 class Matris(object):
     def __init__(self, size=(10, 22), blocksize=30):
