@@ -6,6 +6,7 @@ import kezmenu
 
 from tetrominoes import list_of_tetrominoes
 from tetrominoes import rotate
+from scores import load_score, write_score
 
 class BrokenMatrixException(Exception):
     pass
