@@ -303,7 +303,7 @@ class Game(object):
             screen.blit(background, (0, 0))
             pygame.display.flip()
             def info_surf(self):
-            score, level, lines = self.matris.score, self.matris.level, self.matris.lines
+            
 
         textcolor = (255, 255, 255)
         font = pygame.font.Font(None, 30)
