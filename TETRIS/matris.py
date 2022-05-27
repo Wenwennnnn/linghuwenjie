@@ -295,8 +295,11 @@ class Game(object):
                 return
             background.blit(matris_border, (0,0))
             background.blit(self.matris.surface, (10,10))
-            background.blit(self.next_tetromino_surf(self.matris.surface_of_next_tetromino), (400, 30))
-            background.blit(self.info_surf(), (350, 200))
+            nextts = self.next_tetromino_surf(self.matris.surface_of_next_tetromino)
+            background.blit(nextts, nextts.get_rect(top=20, centerx=(30*10)+(30*5)+30))
+
+            infos = self.info_surf()
+            background.blit(infos, infos.get_rect(top=200, centerx=(30*10)+(30*5)+30))
             screen.blit(background, (0, 0))
             pygame.display.flip()
             def info_surf(self):
