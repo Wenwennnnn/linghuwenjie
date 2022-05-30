@@ -404,12 +404,43 @@ class Menu(object):
                 if event.type == pygame.QUIT:
                     exit()
 
-            menu.update(events, clock.tick(30)/1000.)
-            screen.fill((0,200,0))
+            menu.update(events, timepassed)
+
+            timepassed = clock.tick(30) / 1000.
+
+            if timepassed > 1: # A game has most likely been played 
+                highscoresurf = self.construct_highscoresurf()
+
+            screen.blit(nightmare, (0,0))
+            screen.blit(highscoresurf, highscoresurf.get_rect(right=WIDTH-50, bottom=HEIGHT-50))
             menu.draw(screen)
             pygame.display.flip()
+            def construct_highscoresurf(self):
+        font = pygame.font.Font(None, 50)
+        highscore = load_score()
+        text = "Highscore: {}".format(highscore)
+        return font.render(text, True, (255,255,255))
+
+def construct_nightmare(size):
+    surf = Surface(size)
+
+    boxsize = 8
+    bordersize = 1
+    vals = '1235' # only the lower values, for darker colors and greater fear
+    arr = pygame.PixelArray(surf)
+    for x in xrange(0, len(arr), boxsize):
+        for y in xrange(0, len(arr[x]), boxsize):
+
+            color = int(''.join([random.choice(vals) + random.choice(vals) for _ in range(3)]), 16)
+
+            for LX in xrange(x, x+(boxsize - bordersize)):
+                for LY in xrange(y, y+(boxsize - bordersize)):
+                    if LX < len(arr) and LY < len(arr[x]):
+                        arr[LX][LY] = color
+    del arr
+    return surf
 
 if __name__ == '__main__':
     pygame.init()
-    screen = pygame.display.set_mode((640, 30*20+20))
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
     Menu().main(screen)
