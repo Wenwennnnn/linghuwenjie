@@ -387,9 +387,15 @@ class Menu(object):
             ['Play!', lambda: Game().main(screen)],
             ['Quit', lambda: setattr(self, 'running', False)],
         )
-        menu.x = 50
-        menu.y = 50
-        menu.enableEffect('raise-col-padding-on-focus', enlarge_time=0.07)
+        menu.position = (50, 50)
+        menu.enableEffect('enlarge-font-on-focus', font=None, size=60, enlarge_factor=1.2, enlarge_time=0.3)
+        menu.color = (255,255,255)
+        menu.focus_color = (40, 200, 40)
+
+        nightmare = construct_nightmare(screen.get_size())
+        highscoresurf = self.construct_highscoresurf()
+
+        timepassed = clock.tick(30) / 1000.
 
         while self.running:
             events = pygame.event.get()
