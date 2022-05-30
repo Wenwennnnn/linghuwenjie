@@ -81,7 +81,12 @@ class Matris(object):
 
         pressed = lambda key: event.type == pygame.KEYDOWN and event.key == key
         unpressed = lambda key: event.type == pygame.KEYUP and event.key == key
-        for event in events:
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                exit()
+            if pressed(pygame.K_ESCAPE) or pressed(pygame.K_q):
+                self.prepare_and_execute_gameover()
             if pressed(pygame.K_SPACE):
                 self.hard_drop()
             elif pressed(pygame.K_UP):
@@ -107,6 +112,12 @@ class Matris(object):
                 self.request_movement('down')
             elif pressed(pygame.K_l):
                 self.lock_tetromino()
+            elif pressed(pygame.K_p):
+                self.surface.fill((0,0,0))
+                self.paused = not self.paused
+
+        if self.paused:
+            return
 
               self.downwards_speed = self.base_downwards_speed ** (1 + self.level/10.)
 
@@ -130,18 +141,22 @@ class Matris(object):
         try:
             with_tetromino = self.blend(self.rotated(), allow_failure=False, matrix=with_shadow)
         except BrokenMatrixException:
-            self.gameover_sound.play()
-            return 'gameover'
+            self.prepare_and_execute_gameover()
+            return
         for y in range(self.size['height']):
             for x in range(self.size['width']):
                 
                 #hide the 2 first rows by drawing them outside of the surface
                 block_location = Rect(x*self.blocksize, (y*self.blocksize - 2*self.blocksize), self.blocksize, self.blocksize)
                 if with_tetromino[(y,x)] is None:
-                    self.surface.fill((30,30,30), block_location)
+                    self.surface.fill(BGCOLOR, block_location)
                 else:
-                    self.surface.fill((30,30,30), block_location)
+                    self.surface.fill(BGCOLOR, block_location)
                     self.surface.blit(with_tetromino[(y,x)][1], block_location)
+                    def prepare_and_execute_gameover(self):
+        self.gameover_sound.play()
+        write_score(self.score)
+        self.gameover = True
 
     def place_shadow(self):
         posY, posX = self.tetromino_position
