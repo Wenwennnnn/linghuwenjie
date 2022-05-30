@@ -235,12 +235,15 @@ class Matris(object):
     def lock_tetromino(self):
         tetromino_centerX = self.tetromino_position[1]*self.blocksize + len(self.current_tetromino.shape)*self.blocksize/2
         self.matrix = self.blend()
-         lines_cleared, bottom_line_cleared = self.remove_lines()
+        lines_cleared, bottom_line_cleared = self.remove_lines()
         self.lines += lines_cleared
 
         if lines_cleared:
             self.linescleared_sound.play()
             self.score += 100 * (lines_cleared + self.combo)
+        if not self.played_highscorebeaten_sound and self.score > self.highscore:
+                self.highscorebeaten_sound.play()
+                self.played_highscorebeaten_sound = True
 
         if self.lines >= self.level*10:
             self.levelup_sound.play()
@@ -305,31 +308,25 @@ class Game(object):
     def main(self, screen):
         clock = pygame.time.Clock()
         background = Surface(screen.get_size())
-        background.fill((240,240,240))
+        background.blit(construct_nightmare(background.get_size()), (0,0))
+
         self.matris = Matris()
-        matris_border = Surface((10*30+20, 20*30+20))
-        matris_border.fill((80,80,80))
-        self.bonus_stuff = []
+        matris_border = Surface((MATRIX_WIDTH*BLOCKSIZE+BORDERWIDTH*2, VISIBLE_MATRIX_HEIGHT*BLOCKSIZE+BORDERWIDTH*2))
+        matris_border.fill(BORDERCOLOR)
         while 1:
             dt = clock.tick(45)
 
-            events = pygame.event.get()
-            for event in events:
-                if event.type == pygame.QUIT:
-                    exit()
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    return
-
-            result = self.matris.update(dt / 1000., events)
-            if result == 'gameover':
+            self.matris.update((dt / 1000.) if not self.matris.paused else 0)
+            if self.matris.gameover:
                 return
-            background.blit(matris_border, (0,0))
-            background.blit(self.matris.surface, (10,10))
-            nextts = self.next_tetromino_surf(self.matris.surface_of_next_tetromino)
-            background.blit(nextts, nextts.get_rect(top=20, centerx=(30*10)+(30*5)+30))
+            tricky_centerx = WIDTH-(WIDTH-(MATRIS_OFFSET+BLOCKSIZE*MATRIX_WIDTH+BORDERWIDTH*2))/2
 
+            background.blit(matris_border, (MATRIS_OFFSET,MATRIS_OFFSET))
+            background.blit(self.matris.surface, (MATRIS_OFFSET+BORDERWIDTH, MATRIS_OFFSET+BORDERWIDTH))
+            nextts = self.next_tetromino_surf(self.matris.surface_of_next_tetromino)
+            background.blit(nextts, nextts.get_rect(top=MATRIS_OFFSET, centerx=tricky_centerx))
             infos = self.info_surf()
-            background.blit(infos, infos.get_rect(top=200, centerx=(30*10)+(30*5)+30))
+            background.blit(infos, infos.get_rect(bottom=HEIGHT-MATRIS_OFFSET, centerx=tricky_centerx))
             screen.blit(background, (0, 0))
             pygame.display.flip()
             def info_surf(self):
@@ -337,16 +334,16 @@ class Game(object):
 
         textcolor = (255, 255, 255)
         font = pygame.font.Font(None, 30)
-        width = 280
+        width = (WIDTH-(MATRIS_OFFSET+BLOCKSIZE*MATRIX_WIDTH+BORDERWIDTH*2)) - MATRIS_OFFSET*2
 
         def renderpair(text, val):
             text = font.render(text, True, textcolor)
             val = font.render(str(val), True, textcolor)
 
-            surf = Surface((width, text.get_rect().height + 20), pygame.SRCALPHA, 32)
+            surf = Surface((width, text.get_rect().height + BORDERWIDTH*2), pygame.SRCALPHA, 32)
 
-            surf.blit(text, text.get_rect(top=20, left=20))
-            surf.blit(val, val.get_rect(top=20, right=width-20))
+            surf.blit(text, text.get_rect(top=BORDERWIDTH+10, left=BORDERWIDTH+10))
+            surf.blit(val, val.get_rect(top=BORDERWIDTH+10, right=width-(BORDERWIDTH+10)))
             return surf
 
         scoresurf = renderpair("Score", self.matris.score)
@@ -360,8 +357,8 @@ class Game(object):
                        combosurf.get_rect().height )
 
         area = Surface((width, height))
-        area.fill((80,80,80))
-        area.fill((30,30,30), Rect(10, 10, width-20, height-20))
+        area.fill(BORDERCOLOR)
+        area.fill(BGCOLOR, Rect(BORDERWIDTH, BORDERWIDTH, width-BORDERWIDTH*2, height-BORDERWIDTH*2))
 
         area.blit(levelsurf, (0,0))
         area.blit(scoresurf, (0, levelsurf.get_rect().height))
@@ -369,10 +366,10 @@ class Game(object):
         area.blit(combosurf, (0, levelsurf.get_rect().height + scoresurf.get_rect().height + linessurf.get_rect().height))
 
         return area
-            def next_tetromino_surf(self, tetromino_surf):
-             area = Surface((30*5, 30*5))
-             area.fill((80,80,80))
-             area.fill((30,30,30), Rect(10, 10, 30*5-20, 30*5-20))
+        def next_tetromino_surf(self, tetromino_surf):
+             area = Surface((BLOCKSIZE*5, BLOCKSIZE*5))
+        area.fill(BORDERCOLOR)
+        area.fill(BGCOLOR, Rect(BORDERWIDTH, BORDERWIDTH, BLOCKSIZE*5-BORDERWIDTH*2, BLOCKSIZE*5-BORDERWIDTH*2))
 
              areasize = area.get_size()[0]
              tetromino_surf_size = tetromino_surf.get_size()[0]
