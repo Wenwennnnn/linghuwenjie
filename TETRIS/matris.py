@@ -355,7 +355,7 @@ class Game(object):
         scoresurf = renderpair("Score", self.matris.score)
         levelsurf = renderpair("Level", self.matris.level)
         linessurf = renderpair("Lines", self.matris.lines)
-        combosurf = renderpair("Combo", "x{}".format(self.matris.combo+1))
+        combosurf = renderpair("Combo", "x{}".format(self.matris.combo))
 
         height = 20 + (levelsurf.get_rect().height + 
                        scoresurf.get_rect().height +
