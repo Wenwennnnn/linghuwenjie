@@ -49,7 +49,7 @@ class Matris(object):
         self.level = 1
         self.score = 0
         self.lines = 0
-        self.combo = 0 # Combo will increase when you clear lines with several tetrominos in a row
+        self.combo = 1 # Combo will increase when you clear lines with several tetrominos in a row
         self.paused = False
         self.gameover = False
 
