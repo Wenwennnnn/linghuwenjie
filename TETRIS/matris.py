@@ -83,16 +83,24 @@ class Matris(object):
 
         pressed = lambda key: event.type == pygame.KEYDOWN and event.key == key
         unpressed = lambda key: event.type == pygame.KEYUP and event.key == key
-        for event in pygame.event.get():
+        events = pygame.event.get()
 
-            if event.type == pygame.QUIT:
+        for event in events:
+            if pressed(pygame.K_p):
+                self.surface.fill((0,0,0))
+                self.paused = not self.paused
+            elif event.type == pygame.QUIT:
                 self.prepare_and_execute_gameover(playsound=False)
                 exit()
-            if pressed(pygame.K_ESCAPE) or pressed(pygame.K_q):
+            elif pressed(pygame.K_ESCAPE):
                 self.prepare_and_execute_gameover(playsound=False)
+                if self.paused:
+            return
+
+        for event in events:
             if pressed(pygame.K_SPACE):
                 self.hard_drop()
-            elif pressed(pygame.K_UP):
+            elif pressed(pygame.K_UP) or pressed(pygame.K_w):
                 self.request_rotation()
 
             elif pressed(pygame.K_LEFT) or pressed(pygame.K_a):
