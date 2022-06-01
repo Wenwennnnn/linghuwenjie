@@ -122,13 +122,12 @@ class Matris(object):
         if self.paused:
             return
 
-              self.downwards_speed = self.base_downwards_speed ** (1 + self.level/10.)
+            self.downwards_speed = self.base_downwards_speed ** (1 + self.level/10.)
 
-              self.downwards_timer += timepassed
-             downwards_speed = self.downwards_speed*0.10 if pygame.key.get_pressed()[pygame.K_DOWN] else self.downwards_speed
+            self.downwards_timer += timepassed
+            downwards_speed = self.downwards_speed*0.10 if pygame.key.get_pressed()[pygame.K_DOWN] else self.downwards_speed
         if self.downwards_timer > downwards_speed:
-            result = self.request_movement('down')
-            if not result:
+            if not self.request_movement('down'):
                 self.lock_tetromino()
         self.downwards_timer %= downwards_speed
 
@@ -154,7 +153,8 @@ class Matris(object):
                 if with_tetromino[(y,x)] is None:
                     self.surface.fill(BGCOLOR, block_location)
                 else:
-                    self.surface.fill(BGCOLOR, block_location)
+                    if with_tetromino[(y,x)][0] == 'shadow':
+                        self.surface.fill(BGCOLOR, block_location)
                     self.surface.blit(with_tetromino[(y,x)][1], block_location)
                     def prepare_and_execute_gameover(self, playsound=True):
         if playsound:
@@ -255,7 +255,7 @@ class Matris(object):
             self.levelup_sound.play()
             self.level += 1
 
-        self.combo = self.combo + 1 if lines_cleared else 0
+        self.combo = self.combo + 1 if lines_cleared else 1
         self.set_tetrominoes()
 
     def remove_lines(self):
