@@ -117,18 +117,7 @@ class Matris(object):
                 self.movement_keys['right'] = 0
                 self.movement_keys_timer = (-self.movement_keys_speed)*2
 
-            elif pressed(pygame.K_w):
-                self.request_movement('up')
-            elif pressed(pygame.K_s):
-                self.request_movement('down')
-            elif pressed(pygame.K_l):
-                self.lock_tetromino()
-            elif pressed(pygame.K_p):
-                self.surface.fill((0,0,0))
-                self.paused = not self.paused
-
-        if self.paused:
-            return
+            
 
             self.downwards_speed = self.base_downwards_speed ** (1 + self.level/10.)
 
