@@ -1,20 +1,20 @@
-
 import pygame
 import warnings
 
 from kezmenu_effects import KezMenuEffectAble, VALID_EFFECTS
 
-__author__ = "LinghuWenjie"
+__author__ = "Keul - lucafbb AT gmail.com"
+__version__ = "0.3.5"
 
 __description__ = "A simple and basical Pygame library for fast develop of menu interfaces"
 
 class deprecated(object):
     """A decorator for deprecated functions"""
-
+    
     def __init__(self, msg):
         self._msg = msg
         self._printed = False
-
+    
     def __call__(self, func):
         """Log out the deprecation message, but only once"""
         if not self._printed:
@@ -72,11 +72,11 @@ class KezMenu(KezMenuEffectAble):
         last = self.options and self.options[-1]
         for o in self.options:
             indent = o.get('padding_col',0)
-
+            
             # padding above the line
             if o!=first and o.get('padding_line',0):
                 offset+=o['padding_line']
-
+            
             font = o.get('font',self._font)
             if i==self.option and self.focus_color:
                 clr = self.focus_color

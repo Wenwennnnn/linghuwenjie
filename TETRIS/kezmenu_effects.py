@@ -1,11 +1,10 @@
-
 import pygame
 
 VALID_EFFECTS = ('enlarge-font-on-focus','raise-line-padding-on-focus','raise-col-padding-on-focus')
 
 class KezMenuEffectAble(object):
     """Base class used from KezMenu, to group all data and method needed for effects support"""
-
+    
     def __init__(self):
         self._effects = {}
 
@@ -129,7 +128,7 @@ class KezMenuEffectAble(object):
             del o['padding_line']
 
 
-            def _effectinit_raise_col_padding_on_focus(self, name, **kwargs):
+    def _effectinit_raise_col_padding_on_focus(self, name, **kwargs):
         """Init the effect that raise the empty space on the left of the focused entry.
         Keyword arguments can contain enlarge_time (seconds needed to raise the element size)
         and padding (a value that repr the number of pixel to be added above and below the focused line).

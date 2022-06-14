@@ -65,16 +65,16 @@ def rotate(shape, times=1):
 
 def rotate_left(shape, times=1):
     """ Rotate a shape to the left """
-    return '\n'.join(''.join(map({'X': 'X', None: 'O'}.get, line))
-                     for line in shape)
+    return rotate(shape, 3) if times <= 1 else rotate_left(rotate(shape, 3), times-1)
 
-    def shape_str(shape):
+def shape_str(shape):
     """ Return a string of a shape in human readable form """
     return '\n'.join(''.join(line) for line in shape)
 
 def shape(shape):
     """ Print a shape in human readable form """
-    print shape_str(shape)
+    print
+    shape_str(shape)
 
 
 
@@ -99,7 +99,8 @@ def test():
     assert rotate(T_hat.shape, 2) == ((O,O,O),
                                       (X,X,X),
                                       (O,X,O))
-    print "All tests passed in {}, things seems to be working alright".format(__file__)
+    print
+    "All tests passed in {}, things seems to be working alright".format(__file__)
 
 if __name__ == '__main__':
     test()
